@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy SQL Assignment</title>
+    <link rel="stylesheet" href="sql.css">
+</head>
+<body>
+    <header>
+        <h1>Pharmacy SQL Assignment</h1>
+    </header>
+    <section class="assignment-details">
+        <h2>Assignment Name: SQL Queries for Pharmacy Database</h2>
+        <p><strong>Description:</strong> The assignment focuses on querying a Pharmacy database using SQL operations such as DDL, DML, joins, aggregate functions, and subqueries to manage relationships among entities like Pharmaceutical Companies, Drugs, Pharmacies, Doctors, and Patients.</p>
+    </section>
+    <section class="assignment-sql">
+        <h3>SQL Queries</h3>
+
+        <div class="query-block">
+            <h4>1. Create a Table for Drugs</h4>
+            <pre>
+CREATE TABLE Drugs (
+    DrugID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Formula VARCHAR(255),
+    TradeName VARCHAR(100),
+    CompanyID INT,
+    FOREIGN KEY (CompanyID) REFERENCES PharmaceuticalCompanies(CompanyID)
+);
+            </pre>
+        </div>
+
+        <div class="query-block">
+            <h4>2. Insert Data into Drugs</h4>
+            <pre>
+INSERT INTO Drugs (DrugID, Name, Formula, TradeName, CompanyID)
+VALUES 
+(1, 'Paracetamol', 'C8H9NO2', 'Panadol', 101),
+(2, 'Ibuprofen', 'C13H18O2', 'Advil', 102),
+(3, 'Amoxicillin', 'C16H19N3O5S', 'Mox', 103);
+            </pre>
+        </div>
+
+        <div class="query-block">
+            <h4>3. Find All Drugs Sold by a Specific Company</h4>
+            <pre>
+SELECT Name, TradeName 
+FROM Drugs
+WHERE CompanyID = 101;
+            </pre>
+        </div>
+
+        <div class="query-block">
+            <h4>4. Subquery: Find Drugs Above Average Price</h4>
+            <pre>
+SELECT Name 
+FROM Drugs d
+WHERE DrugID IN (
+    SELECT DrugID 
+    FROM PharmacySales
+    WHERE Price > (SELECT AVG(Price) FROM PharmacySales)
+);
+            </pre>
+        </div>
+
+        <div class="query-block">
+            <h4>5. List All Drugs Sold by a Specific Pharmacy</h4>
+            <pre>
+SELECT d.Name AS DrugName, ps.Price 
+FROM Drugs d, PharmacySales ps 
+WHERE d.DrugID = ps.DrugID 
+  AND ps.PharmacyID = 1;
+            </pre>
+        </div>
+
+        <div class="query-block">
+            <h4>6. Find All Patients Prescribed a Specific Drug</h4>
+            <pre>
+SELECT p.Name AS PatientName, dr.Name AS DrugName 
+FROM Patients p, Prescriptions pr, Drugs dr 
+WHERE p.PatientID = pr.PatientID 
+  AND pr.DrugID = dr.DrugID 
+  AND dr.Name = 'Paracetamol';
+            </pre>
+        </div>
+
+        <div class="query-block">
+            <h4>7. Count the Number of Pharmacies Selling a Specific Drug</h4>
+            <pre>
+SELECT COUNT(DISTINCT ps.PharmacyID) AS PharmacyCount
+FROM PharmacySales ps, Drugs d
+WHERE ps.DrugID = d.DrugID 
+  AND d.Name = 'Amoxicillin';
+            </pre>
+        </div>
+
+        <div class="query-block">
+            <h4>8. List Pharmaceutical Companies with Active Contracts</h4>
+            <pre>
+SELECT pc.Name AS CompanyName, c.Terms
+FROM PharmaceuticalCompanies pc, Contracts c
+WHERE pc.CompanyID = c.CompanyID 
+  AND c.EndDate > CURRENT_DATE;
+            </pre>
+        </div>
+
+        <div class="query-block">
+            <h4>9. Find Doctors Who Prescribed Drugs for Patients Over a Certain Age</h4>
+            <pre>
+SELECT d.Name AS DoctorName, p.Name AS PatientName 
+FROM Doctors d, Prescriptions pr, Patients p
+WHERE d.DoctorID = pr.DoctorID 
+  AND pr.PatientID = p.PatientID 
+  AND p.Age > 50;
+            </pre>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Omkar P C. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Database: Normalization and Transaction Processing</title>
+    <link rel="stylesheet" href="normalisation.css">
+</head>
+<body>
+    <header>
+        <h1>Pharmacy Database: Normalization and Transaction Processing</h1>
+    </header>
+    <section class="assignment-details">
+        <h2>Assignment Name: Normalization and Transaction Processing</h2>
+        <p><strong>Description:</strong> This assignment focused on designing and optimizing the Pharmacy database through normalization and implementing transaction processing to ensure reliable and consistent multi-user operations.</p>
+        <h3>Features:</h3>
+        <ul>
+            <li>Normalized the database to the Boyce-Codd Normal Form (BCNF) to eliminate redundancy and improve data integrity.</li>
+            <li>Implemented a transaction management system ensuring ACID properties (Atomicity, Consistency, Isolation, Durability).</li>
+            <li>Ensured proper concurrency control using Two-Phase Locking (2PL) mechanism.</li>
+            <li>Optimized query performance with appropriate indexing on foreign keys and frequently queried attributes.</li>
+        </ul>
+        <h3>Challenges and Solutions:</h3>
+        <p>
+            A key challenge was managing many-to-many relationships between Pharmaceutical Companies and Pharmacies. This was resolved by introducing a `Contracts` table with attributes such as `StartDate`, `EndDate`, and `Terms`. For transaction processing, handling deadlocks was addressed by implementing a timeout mechanism in the locking process.
+        </p>
+        <h3>Reflection:</h3>
+        <p>
+            This assignment significantly enhanced my understanding of database normalization principles and their practical application in real-world systems. Implementing transaction management systems helped me learn techniques to ensure data consistency and reliability, even in multi-user environments.
+        </p>
+    </section>
+    <section class="assignment-examples">
+        <h3>Normalization Example</h3>
+        <div class="example-block">
+            <h4>Unnormalized Table:</h4>
+            <pre>
+PharmacyID | PharmacyName | DrugName  | Price | CompanyName  | ContractStart | ContractEnd
+------------------------------------------------------------------------------------------
+1          | CityPharma   | Paracetamol| 50    | PharmaCorp   | 2023-01-01    | 2024-01-01
+1          | CityPharma   | Ibuprofen  | 70    | MedHealth    | 2023-06-01    | 2024-06-01
+2          | HealthPlus   | Amoxicillin| 90    | MedHealth    | 2023-06-01    | 2024-06-01
+            </pre>
+        </div>
+        <div class="example-block">
+            <h4>Normalized Tables (1NF to BCNF):</h4>
+            <pre>
+Table: Pharmacies
+PharmacyID  | PharmacyName
+--------------------------
+1           | CityPharma
+2           | HealthPlus
+
+Table: Drugs
+DrugID  | DrugName    | Price
+-----------------------------
+1       | Paracetamol | 50
+2       | Ibuprofen   | 70
+3       | Amoxicillin | 90
+
+Table: Contracts
+PharmacyID | CompanyName | DrugID | ContractStart | ContractEnd
+---------------------------------------------------------------
+1          | PharmaCorp  | 1      | 2023-01-01    | 2024-01-01
+1          | MedHealth   | 2      | 2023-06-01    | 2024-06-01
+2          | MedHealth   | 3      | 2023-06-01    | 2024-06-01
+            </pre>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Omkar P C. All rights reserved.</p>
+    </footer>
+</body>
+</html>

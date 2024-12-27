@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Structured Enquiry: Pharmacy Management System</title>
+    <link rel="stylesheet" href="structured_enquiry.css">
+</head>
+<body>
+    <header>
+        <h1>Structured Enquiry: Pharmacy Management System</h1>
+    </header>
+    <section class="assignment-details">
+        <h2>Problem Statement</h2>
+        <p>
+            The Pharmacy Management System aims to address the complexities of managing pharmaceutical company contracts, drug inventories, sales tracking, prescriptions, and patient-doctor interactions. The primary goal is to create an efficient, secure, and scalable database system to handle these operations seamlessly.
+        </p>
+    </section>
+    <section class="assignment-objectives">
+        <h2>Objectives</h2>
+        <ul>
+            <li>Design a database to manage relationships between Pharmaceutical Companies, Pharmacies, Doctors, Patients, and Drugs.</li>
+            <li>Ensure data integrity, security, and consistency across all operations.</li>
+            <li>Enable efficient querying for data retrieval and reporting purposes.</li>
+            <li>Provide support for transactional operations with ACID properties.</li>
+        </ul>
+    </section>
+    <section class="system-design">
+        <h2>System Design</h2>
+        <p>The system is designed using an Entity-Relationship (ER) model with the following key entities and relationships:</p>
+        <ul>
+            <li><strong>Entities:</strong> Pharmacies, Pharmaceutical Companies, Doctors, Patients, Drugs.</li>
+            <li><strong>Relationships:</strong> Contracts (between Pharmacies and Companies), Prescriptions (between Doctors and Patients), Sales (between Pharmacies and Drugs).</li>
+            <li><strong>Normalization:</strong> Database normalized to BCNF to ensure minimal redundancy.</li>
+            <li><strong>Schema Design:</strong> Includes primary and foreign keys, along with constraints to maintain data integrity.</li>
+        </ul>
+    </section>
+    <section class="implementation">
+        <h2>Implementation</h2>
+        <p>
+            The system was implemented using SQL for database creation and operations. Key aspects of the implementation include:
+        </p>
+        <ul>
+            <li>Created normalized tables with relationships and constraints.</li>
+            <li>Executed complex queries for sales tracking, contract management, and prescription analysis.</li>
+            <li>Designed views for simplified data retrieval and enhanced reporting capabilities.</li>
+            <li>Implemented transactional operations to ensure consistency in multi-user environments.</li>
+        </ul>
+    </section>
+    <section class="reflection">
+        <h2>Reflection on Learning</h2>
+        <p>
+            This assignment significantly enhanced my understanding of database design principles and their practical applications in real-world scenarios. By working on the Pharmacy Management System, I gained insights into structuring data efficiently, securing sensitive information, and ensuring data consistency in multi-user environments.
+        </p>
+        <p>
+            The process also highlighted the importance of normalization, query optimization, and transaction management in building scalable and reliable database systems. This learning experience has strengthened my foundation in database management systems and prepared me to tackle more complex challenges in the future.
+        </p>
+    </section>
+    <footer>
+        <p>&copy; 2024 Omkar P C. All rights reserved.</p>
+    </footer>
+</body>
+</html>
