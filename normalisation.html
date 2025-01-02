@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pharmacy Database: Normalization and Transaction Processing</title>
-    <link rel="stylesheet" href="normalisation.css">
+    <link rel="stylesheet" href="ER.css">
 </head>
 <body>
     <header>
@@ -29,42 +29,50 @@
             This assignment significantly enhanced my understanding of database normalization principles and their practical application in real-world systems. Implementing transaction management systems helped me learn techniques to ensure data consistency and reliability, even in multi-user environments.
         </p>
     </section>
-    <section class="assignment-examples">
-        <h3>Normalization Example</h3>
-        <div class="example-block">
-            <h4>Unnormalized Table:</h4>
-            <pre>
-PharmacyID | PharmacyName | DrugName  | Price | CompanyName  | ContractStart | ContractEnd
-------------------------------------------------------------------------------------------
-1          | CityPharma   | Paracetamol| 50    | PharmaCorp   | 2023-01-01    | 2024-01-01
-1          | CityPharma   | Ibuprofen  | 70    | MedHealth    | 2023-06-01    | 2024-06-01
-2          | HealthPlus   | Amoxicillin| 90    | MedHealth    | 2023-06-01    | 2024-06-01
-            </pre>
-        </div>
-        <div class="example-block">
-            <h4>Normalized Tables (1NF to BCNF):</h4>
-            <pre>
-Table: Pharmacies
-PharmacyID  | PharmacyName
---------------------------
-1           | CityPharma
-2           | HealthPlus
+    <section id="normal-forms">
+        <article id="1nf">
+            <h2>First Normal Form (1NF)</h2>
+            <p><strong>Definition:</strong> A database table is in the First Normal Form (1NF) if:</p>
+            <ul>
+                <li>Each column contains atomic (indivisible) values.</li>
+                <li>There are no repeating groups or arrays in any column.</li>
+            </ul>
+            <p><strong>Explanation:</strong> In 1NF, the focus is on ensuring that data is stored in a structured and consistent manner. All values in a column must be of the same type, and no single field should contain multiple values.</p>
+            <p><strong>Significance:</strong> 1NF eliminates redundancy by ensuring the database contains a flat structure.</p>
+        </article>
 
-Table: Drugs
-DrugID  | DrugName    | Price
------------------------------
-1       | Paracetamol | 50
-2       | Ibuprofen   | 70
-3       | Amoxicillin | 90
+        <article id="2nf">
+            <h2>Second Normal Form (2NF)</h2>
+            <p><strong>Definition:</strong> A table is in the Second Normal Form (2NF) if:</p>
+            <ul>
+                <li>It is already in 1NF.</li>
+                <li>All non-key attributes are fully functionally dependent on the entire primary key.</li>
+            </ul>
+            <p><strong>Explanation:</strong> 2NF addresses the issue of partial dependency, which occurs when a non-key attribute depends on only part of a composite primary key. By removing these partial dependencies, the table is split into smaller tables, ensuring that every non-key attribute relates directly to the full primary key.</p>
+            <p><strong>Significance:</strong> 2NF ensures that each piece of data is stored in the correct table and reduces data redundancy further.</p>
+        </article>
 
-Table: Contracts
-PharmacyID | CompanyName | DrugID | ContractStart | ContractEnd
----------------------------------------------------------------
-1          | PharmaCorp  | 1      | 2023-01-01    | 2024-01-01
-1          | MedHealth   | 2      | 2023-06-01    | 2024-06-01
-2          | MedHealth   | 3      | 2023-06-01    | 2024-06-01
-            </pre>
-        </div>
+        <article id="3nf">
+            <h2>Third Normal Form (3NF)</h2>
+            <p><strong>Definition:</strong> A table is in the Third Normal Form (3NF) if:</p>
+            <ul>
+                <li>It is already in 2NF.</li>
+                <li>No non-prime attribute is transitively dependent on the primary key.</li>
+            </ul>
+            <p><strong>Explanation:</strong> 3NF focuses on eliminating transitive dependencies, where a non-key attribute depends on another non-key attribute. This is achieved by creating separate tables to ensure that each attribute directly relates to the primary key.</p>
+            <p><strong>Significance:</strong> 3NF improves data integrity and reduces anomalies by ensuring that every attribute provides a fact about the primary key.</p>
+        </article>
+
+        <article id="bcnf">
+            <h2>Boyce-Codd Normal Form (BCNF)</h2>
+            <p><strong>Definition:</strong> A table is in the Boyce-Codd Normal Form (BCNF) if:</p>
+            <ul>
+                <li>It is already in 3NF.</li>
+                <li>Every determinant is a candidate key.</li>
+            </ul>
+            <p><strong>Explanation:</strong> BCNF is a stricter version of 3NF. It ensures that all functional dependencies are on a superkey (a key that uniquely identifies rows). BCNF resolves cases where a non-prime attribute determines a candidate key.</p>
+            <p><strong>Significance:</strong> BCNF eliminates all redundancy caused by functional dependencies, making the database design more robust and efficient.</p>
+        </article>
     </section>
     <footer>
         <p>&copy; 2024 Omkar P C. All rights reserved.</p>
