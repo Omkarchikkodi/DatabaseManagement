@@ -90,6 +90,24 @@ header h1 {
     overflow-x: auto;
 }
 
+section#normal-forms {
+    margin: 1rem 0;
+}
+
+article {
+    background: white;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+}
+
 /* Footer */
 footer {
     background: #333;
