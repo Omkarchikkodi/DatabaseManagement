@@ -12,17 +12,48 @@
     </header>
     <section class="assignment-details">
         <h2>Assignment Name: Pharmacy Database ER Model</h2>
-        <p><strong>Description:</strong> This assignment involves designing an ER model for a pharmacy database, addressing the relationships and structural constraints among entities like Pharmaceutical Companies, Drugs, Pharmacies, Doctors, and Patients.</p>
+        <p><strong>Description:</strong> This assignment involved designing an Entity-Relationship (ER) model for a pharmacy database. The goal was to capture and represent the relationships and structural constraints among various entities such as Pharmaceutical Companies, Drugs, Pharmacies, Doctors, and Patients. The database model aims to provide a robust framework for managing pharmacy-related data effectively and efficiently.</p>
         <h3>Features:</h3>
         <ul>
-            <li>Defined entities such as Pharmaceutical Companies, Drugs, Pharmacies, Doctors, and Patients.</li>
-            <li>Established relationships with attributes like contracts, prescriptions, and sales.</li>
-            <li>Specified primary and foreign keys for all entity and relationship sets.</li>
+            <li><strong>Defined Entities:</strong>
+                <ul>
+                    <li><strong>Pharmaceutical Companies:</strong> Attributes include company ID, name, headquarters location, and contact details.</li>
+                    <li><strong>Drugs:</strong> Attributes include drug ID, name, composition, expiry date, and associated pharmaceutical company.</li>
+                    <li><strong>Pharmacies:</strong> Attributes include pharmacy ID, name, location, and license information.</li>
+                    <li><strong>Doctors:</strong> Attributes include doctor ID, name, specialization, and contact information.</li>
+                    <li><strong>Patients:</strong> Attributes include patient ID, name, date of birth, medical history, and contact details.</li>
+                </ul>
+            </li>
+            <li><strong>Relationships and Attributes:</strong>
+                <ul>
+                    <li><strong>Contracts:</strong> Many-to-many relationship between Pharmacies and Pharmaceutical Companies, resolved by introducing a Contract entity with attributes like contract ID, terms, start date, and end date.</li>
+                    <li><strong>Prescriptions:</strong> Relationship between Doctors and Patients, including attributes like prescription ID, prescribed drug ID, dosage, and date of prescription.</li>
+                    <li><strong>Sales:</strong> Relationship between Pharmacies and Patients with attributes such as sale ID, drug ID, quantity sold, date of sale, and total cost.</li>
+                    <li><strong>Supplies:</strong> Relationship between Pharmaceutical Companies and Drugs to denote which company produces which drug.</li>
+                </ul>
+            </li>
+            <li><strong>Key Design Elements:</strong> 
+                <ul>
+                    <li>Primary keys were defined for each entity to uniquely identify records (e.g., drug ID, pharmacy ID).</li>
+                    <li>Foreign keys were used to establish referential integrity between related entities.</li>
+                </ul>
+            </li>
         </ul>
         <h3>Challenges and Solutions:</h3>
-        <p>One of the key challenges was mapping the many-to-many relationships between Pharmacies and Pharmaceutical Companies. This was resolved by introducing a Contract entity with attributes for terms, start date, and end date.</p>
+        <ul>
+            <li><strong>Mapping Many-to-Many Relationships:</strong> Resolved by introducing a Contract entity with attributes like contract ID, terms, start date, and end date.</li>
+            <li><strong>Handling Complex Structural Constraints:</strong> Applied foreign key constraints and attributes in relationships to capture necessary details like validity and dates.</li>
+            <li><strong>Ensuring Data Consistency and Referential Integrity:</strong> Normalized the schema and used foreign key constraints to maintain consistency across relationships.</li>
+        </ul>
         <h3>Reflection:</h3>
-        <p>Designing this model helped solidify concepts of entity-relationship modeling, relational schema mapping, and understanding of structural constraints and primary key selection.</p>
+        <p>This assignment provided valuable insights into database design principles and strengthened understanding of:</p>
+        <ul>
+            <li>Entity-Relationship Modeling for visually representing relationships and constraints between entities.</li>
+            <li>Relational Schema Mapping to translate the ER model into a database schema.</li>
+            <li>Structural Constraints to accurately represent real-world relationships.</li>
+            <li>Primary Key Selection for uniquely identifying records and supporting efficient querying.</li>
+        </ul>
+        <p>The process enhanced problem-solving skills and deepened knowledge of data modeling techniques, leading to a robust pharmacy database design applicable to real-world scenarios.</p>
     </section>
     <section class="assignment-images">
         <h3>ER Model Diagrams</h3>
